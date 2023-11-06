@@ -8,15 +8,15 @@ package proyecto;
  *
  * @author sjpin
  */
-public class Proyecto {
+public class Sistema {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hola esta es una prueba :3 ");
-        System.out.println("Cambio");
+        System.out.println("Cambien el nombre de la clase");
+        
     }
     
 }
