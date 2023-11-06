@@ -15,4 +15,12 @@ public class Usuario {
     private String user;
     private String contraseña;
     private TipoUsuario tipo;
+    
+    public Usuario(String cedula,String nombre,String apellido , String user,String contraseña,TipoUsuario tipo ){
+        this.apellido= apellido;
+    }
+    
+    public void getCedula(){
+        
+    }
 }
