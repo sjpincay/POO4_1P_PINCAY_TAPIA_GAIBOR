@@ -54,6 +54,4 @@ public class Vehiculo {
     public void setCodigoVehiculo(int codigoVehiculo) {
         this.codigoVehiculo = codigoVehiculo;
     }
-    
-    
 }
