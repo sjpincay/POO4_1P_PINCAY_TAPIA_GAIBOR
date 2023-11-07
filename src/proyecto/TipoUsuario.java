@@ -1,6 +1,6 @@
 
 package proyecto;
-//prueba
+//prueba otra rama
 
 public enum TipoUsuario {
     C, R
