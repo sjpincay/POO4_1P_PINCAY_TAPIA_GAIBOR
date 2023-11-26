@@ -18,26 +18,13 @@ public class Vehiculo {
     private TipoVehiculo tipoVehiculo;
     private int codigoVehiculo;
 
-    public String getPlaca() {
-        return placa;
+   
+    public String mostrarDatos() {
+    return "Marca: " + marca + "\n" +
+           "Modelo: " + modelo + "\n" +
+           "Placa: " + placa + "\n" +
+           "Tipo de Vehiculo: " + tipoVehiculo + "\n" +
+           "Código de Vehiculo: " + codigoVehiculo;
     }
 
-    public String getModelo() {
-        return modelo;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public TipoVehiculo getTipoVehiculo() {
-        return tipoVehiculo;
-    }
-
-    public int getCodigoVehiculo() {
-        return codigoVehiculo;
-    }
-    
-    
-    
-}
+}   
