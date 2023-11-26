@@ -80,7 +80,21 @@ public class ManejoArchivos {
         }
     }
     
-    
+    public static ArrayList<String[]> LeerValidar(String nombreArchivo, boolean saltarPrimeraLinea){
+        ArrayList<String> lineas= ManejoArchivos.LeeFichero(nombreArchivo);
+        ArrayList<String[]> datos= new ArrayList<>();
+        int i;
+        if(saltarPrimeraLinea){
+            for(i=1; i<lineas.size(); i++){
+                datos.add(lineas.get(i).split(","));              
+            }
+        }else{
+            for(i=0; i<lineas.size(); i++){
+                datos.add(lineas.get(i).split(","));
+            }
+        }
+        return datos;
+    }
    
 }
 

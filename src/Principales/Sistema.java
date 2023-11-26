@@ -25,7 +25,7 @@ public class Sistema {
     Método que muestra el menú del conductor
     */
     public static void mostrarMenuConductor(){
-        System.out.println("1. ");
+        System.out.println("1. Consultar Servicio Asignado\n2. Datos de su vehículo");
     }
     /*
     Método que muestra el menú del cliente
@@ -33,6 +33,14 @@ public class Sistema {
     public static void mostrarMenuCliente(){
         System.out.println("1. Solicitar servicio de taxi\n2. Solicitar comida a domicilio\n3. Solicitar entrega encomienda\n4. Consultar servicios");
     }
+    /*
+    Método que lee el archivo "usuarios.txt" y crea objetos de Usuario
+    luego de que se lean los daots, los objetos se agregan a l lista de Usuarios
+    */
+    public static void cargarUsuarios(){
+        //ArrayList<String[]> datosUsuarios = 
+    }
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         /*
