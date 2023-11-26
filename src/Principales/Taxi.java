@@ -24,21 +24,20 @@ public class Taxi extends Servicio {
         return valorAle;
     }
     
-    //override
-     public double calcularValorAPagar(TipoPago tipoP){
-          double total = 0.0;
+    @Override
+     public void calcularValorAPagar(){
+          double total = valorAleatorio() * COSTOKM;
+          System.out.println("el valor a pagar es:"+total);
+     }
           
-          switch (tipoP) {
-              case E:
-                  total = valorAleatorio() * COSTOKM;
-                  break;
-              case TC:
-                  total = valorAleatorio() * COSTOKM +(valorAleatorio() * COSTOKM) * 0.15;
-                  break;
-          }
+           public void calcularValorAPagar(TipoPago tarjeta){
+               double total = valorAleatorio() * COSTOKM +(valorAleatorio() * COSTOKM) * 0.15;
+               System.out.println("el valor a pagar con tarjeta es:"+total);
+           }
           
-        return total; 
-    }
+          
+        
+    
      
      
      public boolean confirmarViaje(){

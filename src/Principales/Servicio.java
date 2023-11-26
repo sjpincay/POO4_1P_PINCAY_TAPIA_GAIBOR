@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Principales;
 
-/**
- *
- * @author sjpin
- */
-public class Servicio {
+
+public abstract class  Servicio {
+    private Conductor conductorAsignado;
     
+    
+    public abstract void calcularValorAPagar();
+        
+    
+     
 }
