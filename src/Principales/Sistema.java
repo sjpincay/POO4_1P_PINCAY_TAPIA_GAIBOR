@@ -24,8 +24,20 @@ public class Sistema {
     /*
     Método que muestra el menú del conductor
     */
-    public static void mostrarMenuConductor(){
-        System.out.println("1. Consultar Servicio Asignado\n2. Datos de su vehículo");
+    public void menuConductor() {
+        Conductor c = new Conductor();
+        int opcion = c.seleccionarOpcion();
+        switch (opcion) {
+            case 1:
+                c.consultarServicio();
+                break;
+            case 2:
+                c.mostrarDatosVehiculo();
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                break;
+        }
     }
     /*
     Método que muestra el menú del cliente

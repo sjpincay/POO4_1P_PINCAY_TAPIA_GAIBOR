@@ -10,7 +10,7 @@ package Principales;
  */
 public abstract class Usuario {
 
-    private  String cedula;
+    private String cedula;
     private String nombre;
     private String apellido;
     private int edad;

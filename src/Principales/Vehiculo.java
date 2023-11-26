@@ -27,4 +27,25 @@ public class Vehiculo {
            "Código de Vehiculo: " + codigoVehiculo;
     }
 
+    public String getPlaca() {
+        return placa;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public TipoVehiculo getTipoVehiculo() {
+        return tipoVehiculo;
+    }
+
+    public int getCodigoVehiculo() {
+        return codigoVehiculo;
+    }
+
+    
 }   
