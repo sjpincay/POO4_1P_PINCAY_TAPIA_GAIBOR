@@ -9,5 +9,5 @@ package Enum;
  * @author sjpin
  */
 public enum EstadoConductor {
-    
+    O,D
 }
