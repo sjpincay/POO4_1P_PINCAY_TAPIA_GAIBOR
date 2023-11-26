@@ -13,7 +13,11 @@ import java.util.ArrayList;
  * @author Verónica
  */
 public class ManejoArchivos {
-
+    /**
+     * 
+     * @param nombrearchivo
+     * @return 
+     */
     public static ArrayList<String> LeeFichero(String nombrearchivo) {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
@@ -52,7 +56,11 @@ public class ManejoArchivos {
         return lineas;
 
     }
-
+    /**
+     * 
+     * @param nombreArchivo
+     * @param linea 
+     */
     public static void EscribirArchivo(String nombreArchivo, String linea) {
 
         FileWriter fichero = null;
@@ -101,6 +109,6 @@ public class ManejoArchivos {
         }
         return datos;
     }
-   
+    
 }
 
