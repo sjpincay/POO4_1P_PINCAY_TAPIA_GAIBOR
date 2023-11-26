@@ -8,6 +8,6 @@ package Enum;
  *
  * @author sjpin
  */
-public enum FormaPago {
+public enum TipoVehiculo {
     
 }
