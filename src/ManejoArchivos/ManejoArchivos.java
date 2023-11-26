@@ -80,6 +80,12 @@ public class ManejoArchivos {
         }
     }
     
+    /**
+     * En este método verificamos si para leer el archivo se debe saltar la primera linea o no
+     * @param nombreArchivo
+     * @param saltarPrimeraLinea
+     * @return 
+     */
     public static ArrayList<String[]> LeerValidar(String nombreArchivo, boolean saltarPrimeraLinea){
         ArrayList<String> lineas= ManejoArchivos.LeeFichero(nombreArchivo);
         ArrayList<String[]> datos= new ArrayList<>();
