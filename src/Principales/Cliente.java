@@ -18,7 +18,6 @@ public class Cliente extends Usuario{
     private String tarjetaCredito;
     private ArrayList<Usuario> usuarios;
     private TipoUsuario tipoUsuario;
-   
     
     /**
      *
@@ -61,7 +60,7 @@ public class Cliente extends Usuario{
     }
     
     public void mostrarDatos(){
-        
+        System.out.println();
     }
     
     public int seleccionarOpcion() {
