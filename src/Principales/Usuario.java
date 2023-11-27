@@ -9,14 +9,25 @@ package Principales;
  * @author sjpin
  */
 public abstract class Usuario {
-
+/**
+ * La clase Usuario es una clase abstracta que representa a un usuario en el sistema.
+ */
     private String cedula;
     private String nombre;
     private String apellido;
     private String user;
     private String contraseña;
     private String numCelular;
-    
+    /**
+     * Constructor de la clase Usuario.
+     *
+     * @param cedula La cédula del usuario.
+     * @param nombre El nombre del usuario.
+     * @param apellido El apellido del usuario.
+     * @param user El nombre de usuario del usuario.
+     * @param contraseña La contraseña del usuario.
+     * @param numCelular El número de celular del usuario.
+     */ 
     public Usuario(String cedula,String nombre, String apellido,String user, String contraseña,String numCelular){
         this.cedula= cedula;
         this.nombre= nombre;

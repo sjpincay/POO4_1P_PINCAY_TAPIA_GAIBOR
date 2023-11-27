@@ -7,10 +7,8 @@ package Principales;
 import Enum.TipoVehiculo;
 
 /**
- *
- * @author sjpin
+ * La clase Vehiculo representa un vehículo en el sistema.
  */
-
 public class Vehiculo {
     private String placa;
     private String modelo;
@@ -18,7 +16,12 @@ public class Vehiculo {
     private TipoVehiculo tipoVehiculo;
     private int codigoVehiculo;
 
-   
+
+    /**
+     * Muestra los datos del vehículo.
+     *
+     * @return Una cadena que representa los datos del vehículo.
+     */  
     public String mostrarDatos() {
     return "Marca: " + marca + "\n" +
            "Modelo: " + modelo + "\n" +

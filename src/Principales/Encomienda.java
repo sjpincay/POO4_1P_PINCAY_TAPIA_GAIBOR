@@ -2,12 +2,18 @@
 package Principales;
 import Enum.TipoEncomienda;
 import Enum.TipoVehiculo;
-
+/**
+ * La clase Encomienda hereda de la clase Servicio y representa un servicio de encomienda en el sistema.
+ */
 public class Encomienda extends Servicio {
     private int cantidadProducto;
     private double peso;
     private TipoEncomienda tipoEncomienda;
-
+    /**
+     * Constructor de la clase Encomienda.
+     *
+     * @param conductorAsignado El conductor asignado a la encomienda.
+     */
     public Encomienda(Conductor conductorAsignado) {
         super(conductorAsignado);
     }
@@ -16,7 +22,9 @@ public class Encomienda extends Servicio {
     
     
     
-    
+    /**
+     * Calcula el valor a pagar por la encomienda.
+     */    
     @Override
     public void calcularValorAPagar(){
         double total = 0.0;
@@ -25,7 +33,10 @@ public class Encomienda extends Servicio {
         
     }
     
-    
+    /**
+     * Método para crear un servicio de encomienda
+     * Este método está comentado actualmente.
+     */ 
 //         public void crearServicioEncomienda(){
 //         Conductor conductorSeleccionado = seleccionarConductorDisponible();
 //         Vehiculo vehiculog = esAutoOMoto();
