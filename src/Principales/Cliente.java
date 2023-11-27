@@ -6,12 +6,14 @@ package Principales;
 
 import Enum.TipoUsuario;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author sjpin
  */
 public class Cliente extends Usuario{
+
     private int edad;
     private String tarjetaCredito;
     private ArrayList<Usuario> usuarios;
@@ -33,10 +35,45 @@ public class Cliente extends Usuario{
         this.edad=edad;
         this.tarjetaCredito=tarjetaCredito;
     }
+    
+    public int getEdad() {
+        return edad;
+    }
+
+    public String getTarjetaCredito() {
+        return tarjetaCredito;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setTarjetaCredito(String tarjetaCredito) {
+        this.tarjetaCredito = tarjetaCredito;
+    }
+    
     @Override
     public void consultarServicio() {
+        for(Usuario user:usuarios ){
+            System.out.println(user);
+        }
+    }
+    
+    public void mostrarDatos(){
         
     }
     
+    public int seleccionarOpcion() {
+        int opcion = 0;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("+++++++MENÚ+++++++");
+            System.out.println("1. Consultar Servicio");
+            System.out.println("2. Datos Vehiculo");
+            System.out.println("Por favor, elige una opción:");
+            opcion = sc.nextInt();
+        } while (opcion > 2 || opcion < 1);
+        return opcion;
+    }
     
 }

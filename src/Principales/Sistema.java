@@ -21,38 +21,7 @@ public class Sistema {
     static ArrayList<Servicio>listServicios= new ArrayList<>();
     static ArrayList<Vehiculo>listVehiculos= new ArrayList<>();
     
-    /*
-    Método que muestra el menú del conductor
-    */
-    public void menuConductor() {
-        Conductor c= new Conductor();
-        int opcion = c.seleccionarOpcion();
-        switch (opcion) {
-            case 1:
-                c.consultarServicio();
-                break;
-            case 2:
-                c.mostrarDatosVehiculo();
-                break;
-            default:
-                System.out.println("Opción no válida.");
-                break;
-        }
-    }
-    /*
-    Método que muestra el menú del cliente
-    */
-    public static void mostrarMenuCliente(){
-        System.out.println("1. Solicitar servicio de taxi\n2. Solicitar comida a domicilio\n3. Solicitar entrega encomienda\n4. Consultar servicios");
-    }
-    /*
-    Método que lee el archivo "usuarios.txt" y crea objetos de Usuario
-    luego de que se lean los daots, los objetos se agregan a l lista de Usuarios
-    */
-    public static void cargarUsuarios(){
-        //ArrayList<String[]> datosUsuarios = 
-    }
-    
+   
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         /*
