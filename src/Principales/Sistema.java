@@ -25,7 +25,7 @@ public class Sistema {
     Método que muestra el menú del conductor
     */
     public void menuConductor() {
-        Conductor c = new Conductor();
+        Conductor c= new Conductor();
         int opcion = c.seleccionarOpcion();
         switch (opcion) {
             case 1:

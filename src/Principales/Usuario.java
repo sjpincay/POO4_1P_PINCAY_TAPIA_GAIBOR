@@ -13,16 +13,14 @@ public abstract class Usuario {
     private String cedula;
     private String nombre;
     private String apellido;
-    private int edad;
     private String user;
     private String contraseña;
     private String numCelular;
     
-    public Usuario(String cedula,String nombre, String apellido,int edad,String user, String contraseña,String numCelular){
+    public Usuario(String cedula,String nombre, String apellido,String user, String contraseña,String numCelular){
         this.cedula= cedula;
         this.nombre= nombre;
         this.apellido=apellido;
-        this.edad=edad;
         this.user=user;
         this.contraseña=contraseña;
         this.numCelular=numCelular;

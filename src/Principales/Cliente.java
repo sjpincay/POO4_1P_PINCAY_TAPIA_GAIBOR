@@ -9,7 +9,7 @@ package Principales;
  * @author sjpin
  */
 public class Cliente extends Usuario{
-    
+    private int edad;
     private String tarjetaCredito;
     
     /**
@@ -23,8 +23,9 @@ public class Cliente extends Usuario{
      * @param numCelular
      * @param tarjetaCredito
      */
-    public Cliente(String cedula,String nombre, String apellido,int edad,String user, String contraseña,String numCelular,String tarjetaCredito){
-        super(cedula,nombre, apellido,edad, user,contraseña,numCelular);
+    public Cliente(String cedula,String nombre, String apellido,String user, String contraseña,String numCelular,int edad,String tarjetaCredito){
+        super(cedula,nombre,apellido, user,contraseña,numCelular);
+        this.edad=edad;
         this.tarjetaCredito=tarjetaCredito;
     }
     @Override

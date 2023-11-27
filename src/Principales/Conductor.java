@@ -12,6 +12,7 @@ import Enum.TipoVehiculo;
  * @author sjpin
  */
 public class Conductor extends Usuario{
+    private int edad;
     private String numLicencia;
     private Vehiculo vehiculo;
     private EstadoConductor estadoConductor;
@@ -19,7 +20,8 @@ public class Conductor extends Usuario{
     private TipoVehiculo tipoVehiculo;
 
     public Conductor(String numLicencia, Vehiculo vehiculo, EstadoConductor estadoConductor, String cedula, String nombre, String apellido, int edad, String user, String contraseña, String numCelular) {
-    super(cedula, nombre, apellido, edad, user, contraseña, numCelular);
+    super(cedula, nombre, apellido, user, contraseña, numCelular);
+    this.edad=edad;
     this.numLicencia = numLicencia;
     this.vehiculo = vehiculo;
     this.estadoConductor = estadoConductor;
