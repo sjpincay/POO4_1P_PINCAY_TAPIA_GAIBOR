@@ -29,26 +29,45 @@ public class Vehiculo {
            "Tipo de Vehiculo: " + tipoVehiculo + "\n" +
            "Código de Vehiculo: " + codigoVehiculo;
     }
-
+    /**
+     * Obtiene la placa del vehículo.
+     *
+     * @return La placa del vehículo.
+     */
     public String getPlaca() {
         return placa;
     }
-
+    /**
+     * Obtiene el modelo del vehículo.
+     *
+     * @return El modelo del vehículo.
+     */
     public String getModelo() {
         return modelo;
     }
-
+    /**
+     * Obtiene la marca del vehículo.
+     *
+     * @return La marca del vehículo.
+     */
     public String getMarca() {
         return marca;
     }
-
+    /**
+     * Obtiene el tipo de vehículo.
+     *
+     * @return El tipo de vehículo.
+     */
     public TipoVehiculo getTipoVehiculo() {
         return tipoVehiculo;
     }
-
+    /**
+     * Obtiene el código del vehículo.
+     *
+     * @return El código del vehículo.
+     */
     public int getCodigoVehiculo() {
         return codigoVehiculo;
     }
 
-    
 }   
