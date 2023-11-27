@@ -7,6 +7,14 @@ public class Encomienda extends Servicio {
     private int cantidadProducto;
     private double peso;
     private TipoEncomienda tipoEncomienda;
+
+    public Encomienda(Conductor conductorAsignado) {
+        super(conductorAsignado);
+    }
+    
+    
+    
+    
     
     
     @Override

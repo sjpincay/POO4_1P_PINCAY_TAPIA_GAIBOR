@@ -4,12 +4,19 @@ package Principales;
 import java.util.Random;
     import Enum.TipoPago;
     import java.util.Scanner;
+import ManejoArchivos.ManejoArchivos;
 
 
 public class Taxi extends Servicio {
     
     private int cantidadPersonas;
     final private double COSTOKM = 0.50 ;
+
+    public Taxi(Conductor conductorAsignado, int cantidadPersonas) {
+        super(conductorAsignado);
+        this.cantidadPersonas = cantidadPersonas;
+    }
+   
     
     
    
@@ -68,5 +75,10 @@ public class Taxi extends Servicio {
 //        }
 //     }
      
+     
+     public void guardarEnArchivo(){
+        String datosServicio = "numero de pasajeros" + cantidadPersonas + "distanciaKM"+valorAle+"subtotal"+total;
+        ManejoArchivos.EscribirArchivo("viajes.txt", datosServicio);
+     }
 }
 
