@@ -4,6 +4,9 @@
  */
 package Principales;
 
+import Enum.TipoUsuario;
+import java.util.ArrayList;
+
 /**
  *
  * @author sjpin
@@ -11,6 +14,8 @@ package Principales;
 public class Cliente extends Usuario{
     private int edad;
     private String tarjetaCredito;
+    private ArrayList<Usuario> usuarios;
+    private TipoUsuario tipoUsuario;
     
     /**
      *
