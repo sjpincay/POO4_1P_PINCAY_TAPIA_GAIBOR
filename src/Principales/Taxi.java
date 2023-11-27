@@ -8,37 +8,52 @@ import ManejoArchivos.ManejoArchivos;
 
 
 public class Taxi extends Servicio {
-    
+    Random rd = new Random();
     private int cantidadPersonas;
     final private double COSTOKM = 0.50 ;
+    private int valorAle = rd.nextInt(41)+5;
+    private double total = valorAle * COSTOKM;
 
     public Taxi(Conductor conductorAsignado, int cantidadPersonas) {
         super(conductorAsignado);
         this.cantidadPersonas = cantidadPersonas;
     }
-   
-    
-    
-   
-    
-   
-    
-    
-    
-    public int valorAleatorio(){
-        Random random = new Random();
-        int valorAle = random.nextInt(41) + 5;
+
+    public int getCantidadPersonas() {
+        return cantidadPersonas;
+    }
+
+    public void setCantidadPersonas(int cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
+    }
+
+    public int getValorAle() {
         return valorAle;
     }
+
+    public void setValorAle(int valorAle) {
+        this.valorAle = valorAle;
+    }
+
+    @Override
+    public String toString() {
+        return "Taxi{" + "cantidadPersonas=" + cantidadPersonas + '}';
+    }
+   
+    
+    
+    
+    
+    
     
     @Override
      public void calcularValorAPagar(){
-          double total = valorAleatorio() * COSTOKM;
+          double total = valorAle * COSTOKM;
           System.out.println("el valor a pagar es:"+total);
      }
           
            public void calcularValorAPagar(TipoPago tarjeta){
-               double total = valorAleatorio() * COSTOKM +(valorAleatorio() * COSTOKM) * 0.15;
+               double total = valorAle * COSTOKM +(valorAle * COSTOKM) * 0.15;
                System.out.println("el valor a pagar con tarjeta es:"+total);
            }
           
