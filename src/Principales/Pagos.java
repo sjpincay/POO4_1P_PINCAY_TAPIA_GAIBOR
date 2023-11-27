@@ -7,8 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import Enum.TipoPago;
 /**
- *
- * @author sjpin
+ * La clase Pagos representa un pago en el sistema.
  */
 public class Pagos {
     private int idPago;
@@ -18,7 +17,15 @@ public class Pagos {
     private TipoPago metodoPago;
     private String valorPagar;
     private static int codigo = 0;
-
+    /**
+     * Constructor de la clase Pagos.
+     *
+     * @param servicio El servicio asociado al pago.
+     * @param cliente El cliente que realiza el pago.
+     * @param metodoPago El método de pago utilizado.
+     * @param valorPagar El valor a pagar.
+     * @param datePago La fecha del pago.
+     */
     public Pagos( Servicio servicio, Cliente cliente,TipoPago metodoPago,String valorPagar,Date datePago) {
         this.idPago = codigo++;
         this.servicio = servicio;
@@ -43,7 +50,9 @@ public class Pagos {
     public Cliente getCliente() {
         return cliente;
     }
-    
+    /**
+     * Calcula el total a pagar.
+     */   
     public void calcularTotal() {
         String total = null;
         for (Servicio servicio : servicio.getServicios()) {
@@ -51,6 +60,11 @@ public class Pagos {
         }
         this.valorPagar = total;
     }
+    /**
+     * Genera una representación en cadena de la factura de pago.
+     *
+     * @return Una cadena que representa la factura de pago.
+     */
 
     @Override
     public String toString() {

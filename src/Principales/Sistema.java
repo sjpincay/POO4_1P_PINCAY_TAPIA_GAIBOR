@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package Principales;
+
+
 //import static ManejoArchivos.ManejoArchivos.LeeFichero;
 import Enum.*;
 import ManejoArchivos.ManejoArchivos;
