@@ -19,6 +19,7 @@ public class Cliente extends Usuario{
     private ArrayList<Usuario> usuarios;
     private TipoUsuario tipoUsuario;
     
+    
     /**
      *
      * @param cedula
