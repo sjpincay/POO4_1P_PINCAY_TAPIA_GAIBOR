@@ -34,19 +34,35 @@ public class Pagos {
         this.valorPagar = valorPagar;
         this.datePago = datePago;
     }
-    
+    /**
+     * Obtiene el ID del pago.
+     *
+     * @return El ID del pago.
+     */
     public int getIdPago() {
         return idPago;
     }
-
+    /**
+     * Obtiene la fecha del pago.
+     *
+     * @return La fecha del pago.
+     */
     public Date getDatePago() {
         return datePago;
     }
-
+    /**
+     * Obtiene el servicio asociado al pago.
+     *
+     * @return El servicio asociado al pago.
+     */
     public Servicio getServicio() {
         return servicio;
     }
-
+    /**
+     * Obtiene el cliente que realizó el pago.
+     *
+     * @return El cliente que realizó el pago.
+     */
     public Cliente getCliente() {
         return cliente;
     }
