@@ -9,27 +9,30 @@ package Principales;
  * @author sjpin
  */
 public abstract class Usuario {
-
-    private  String cedula;
+    private String cedula;
+    private int edad;
     private String nombre;
     private String apellido;
-    private int edad;
     private String user;
     private String contraseña;
     private String numCelular;
-    
-    public Usuario(String cedula,String nombre, String apellido,int edad,String user, String contraseña,String numCelular){
-        this.cedula= cedula;
-        this.nombre= nombre;
-        this.apellido=apellido;
-        this.edad=edad;
-        this.user=user;
-        this.contraseña=contraseña;
-        this.numCelular=numCelular;
+
+    public Usuario(String cedula, int edad, String nombre, String apellido, String user, String contraseña, String numCelular) {
+        this.cedula = cedula;
+        this.edad = edad;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.user = user;
+        this.contraseña = contraseña;
+        this.numCelular = numCelular;
     }
 
     public String getCedula() {
         return cedula;
+    }
+
+    public int getEdad() {
+        return edad;
     }
 
     public String getNombre() {
@@ -51,9 +54,13 @@ public abstract class Usuario {
     public String getNumCelular() {
         return numCelular;
     }
-    
+
     public void setCedula(String cedula) {
-    this.cedula = cedula;
+        this.cedula = cedula;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public void setNombre(String nombre) {
@@ -75,10 +82,8 @@ public abstract class Usuario {
     public void setNumCelular(String numCelular) {
         this.numCelular = numCelular;
     }
-    /*
-    metodo consultarServicio que es abstracto 
-    */
+    
     public abstract void consultarServicio();
-    
-    
 }
+
+    
