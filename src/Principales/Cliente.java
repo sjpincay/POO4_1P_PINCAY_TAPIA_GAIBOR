@@ -18,6 +18,7 @@ public class Cliente extends Usuario{
     private String tarjetaCredito;
     private ArrayList<Usuario> usuarios;
     private TipoUsuario tipoUsuario;
+   
     
     /**
      *

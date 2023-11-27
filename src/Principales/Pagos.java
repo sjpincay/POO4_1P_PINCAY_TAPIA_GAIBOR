@@ -16,10 +16,10 @@ public class Pagos {
     private Servicio servicio;
     private Cliente cliente;
     private TipoPago metodoPago;
-    private double valorPagar;
+    private String valorPagar;
     private static int codigo = 0;
 
-    public Pagos( Servicio servicio, Cliente cliente,TipoPago metodoPago,double valorPagar,Date datePago) {
+    public Pagos( Servicio servicio, Cliente cliente,TipoPago metodoPago,String valorPagar,Date datePago) {
         this.idPago = codigo++;
         this.servicio = servicio;
         this.cliente = cliente;
@@ -42,6 +42,14 @@ public class Pagos {
 
     public Cliente getCliente() {
         return cliente;
+    }
+    
+    public void calcularTotal() {
+        String total = null;
+        for (Servicio servicio : servicio.getServicios()) {
+            total += servicio.calcularValorAPagar();
+        }
+        this.valorPagar = total;
     }
 
     @Override

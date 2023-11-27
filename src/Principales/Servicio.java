@@ -17,6 +17,10 @@ public abstract class  Servicio {
     
     
     public abstract void calcularValorAPagar();
+
+    public ArrayList<Servicio> getServicios() {
+        return servicios;
+    }
         
     
      
