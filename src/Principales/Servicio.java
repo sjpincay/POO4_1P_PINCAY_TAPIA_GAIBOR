@@ -1,13 +1,17 @@
 
 package Principales;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * La clase Servicio es una clase abstracta que representa un servicio en el sistema.
  */
-public abstract class  Servicio {
+public class  Servicio {
     protected String codigo;
     protected String conductor;
     protected String Pinicio,Pfin,datePago;
@@ -66,20 +70,53 @@ public abstract class  Servicio {
         this.datePago = datePago;
     }
 
-    
-    
-    /**
-     * Método abstracto para calcular el valor a pagar por el servicio.
-     * Este método debe ser implementado en las clases que hereden de Servicio.
-     */ 
-    public abstract void calcularValorAPagar();
-    /**
-     * Obtiene la lista de servicios.
-     *
-     * @return La lista de servicios.
-     */
+    public String asignarConductor(String tipoVehiculo){
+        String conductor="";
+        String nombrearchivo="conductor.txt";
+        File archivo = null;
+        FileReader FR = null;
+        BufferedReader BR = null;
 
+        try {
+            // Apertura del fichero y creacion de BufferedReader para poder
+            // hacer una lectura comoda (disponer del metodo readLine()).
+            archivo = new File(nombrearchivo);
+            FR = new FileReader(archivo,StandardCharsets.UTF_8);
+            BR = new BufferedReader(FR);
+
+            // Lectura del fichero
+            String linea;
+            while ((linea = BR.readLine()) != null) {
+                String[] datos=linea.split(",");
+                if (datos[3].equals("D")){
+                    String tipo = Conductor.tipo("vehiculo.txt", datos[4]);
+                    if (tipo.equals(tipoVehiculo)){
+                       conductor=datos[0]; 
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // En el finally cerramos el fichero, para asegurarnos
+            // que se cierra tanto si todo va bien como si salta 
+            // una excepcion.
+            try {
+                if (null != FR) {
+                    FR.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
         
+        
+        this.conductor=conductor;
+        return conductor;
+    }
+ 
     @Override
     public String toString() {
         return "\nConductor: " + conductor + "\nFecha: " + datePago + "\nValor a pagar: " + valorP + "\nCodigo: " + codigo;

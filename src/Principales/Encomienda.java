@@ -121,12 +121,8 @@ public static void crearSvEncomienda(Cliente cliente) {
     /**
      * Calcula el valor a pagar por la encomienda.
      */    
-    @Override
-    public void calcularValorAPagar(){
-        double total = 0.0;
-        total = 1 + 4.0;
-        System.out.println("el valor a pagar es:"+ total);
+
         
-    }
+   
     
 }

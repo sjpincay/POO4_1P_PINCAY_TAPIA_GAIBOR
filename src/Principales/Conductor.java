@@ -7,6 +7,10 @@ import Enum.EstadoConductor;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Enum.TipoVehiculo;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.nio.charset.StandardCharsets;
 /**
  * La clase Conductor hereda de la clase Usuario y representa a un conductor en el sistema.
  */
@@ -127,6 +131,46 @@ public class Conductor extends Usuario{
                 break;
         }
     }
+     public static String tipo(String nombrearchivo, String code) {
+        String informacion = "";
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        try {
+            // Apertura del fichero y creacion de BufferedReader para poder
+            // hacer una lectura comoda (disponer del metodo readLine()).
+            archivo = new File(nombrearchivo);
+            fr = new FileReader(archivo, StandardCharsets.UTF_8);
+            br = new BufferedReader(fr);
+
+            // Lectura del fichero
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos[0].equals(code)) {
+                    informacion = datos[4];
+
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // En el finally cerramos el fichero, para asegurarnos
+            // que se cierra tanto si todo va bien como si salta 
+            // una excepcion.
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return informacion;
+    }    
     /**
      * Verifica si el conductor está disponible.
      *
