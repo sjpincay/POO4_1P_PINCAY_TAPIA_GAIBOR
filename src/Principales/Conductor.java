@@ -16,7 +16,7 @@ public class Conductor extends Usuario{
     private String numLicencia;
     private Vehiculo vehiculo;
     private EstadoConductor estadoConductor;
-    private ArrayList<Servicio> serviciosAsignados = new ArrayList<>();
+    private ArrayList<String> serviciosAsignados = new ArrayList<>();
     private TipoVehiculo tipoVehiculo;
     /**
      * Constructor de la clase Conductor.
@@ -71,13 +71,14 @@ public class Conductor extends Usuario{
         this.tipoVehiculo = tipoVehiculo;
     }
 
-    public ArrayList<Servicio> getServiciosAsignados() {
+    public ArrayList<String> getServiciosAsignados() {
         return serviciosAsignados;
     }
 
-    public void setServiciosAsignados(ArrayList<Servicio> serviciosAsignados) {
+    public void setServiciosAsignados(ArrayList<String> serviciosAsignados) {
         this.serviciosAsignados = serviciosAsignados;
     }
+
 
     public static String tipo(String nombreArchivo, String code) {
         ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
@@ -90,36 +91,72 @@ public class Conductor extends Usuario{
         return "";
     }
     
-    
-    public int seleccionarOpcion() {
-        int opcion = 0;
-        Scanner sc = new Scanner(System.in);
-        do {
-            System.out.println("SERVICIO ASIGNADO");
-            System.out.println("1. Consultar Servicio");
-            System.out.println("2. Datos Vehiculo");
-            System.out.println("Por favor, elige una opción:");
-            opcion = sc.nextInt();
-        } while (opcion > 2 || opcion < 1);
-        return opcion;
+    @Override
+    public void mostrarMenu(){
+        super.mostrarMenu();
+        System.out.println("1. Consultar servicio asignado");
+        
     }
-    /**
-     * Permite al conductor seleccionar una opción del menú.
-     *
-     * @return La opción seleccionada por el conductor.
-     */    
-    public void menuConductor() {
-        int opcion = seleccionarOpcion();
-        switch (opcion) {
-            case 1:
-                consultarServicio();
-                break;
-            case 2:
-                mostrarDatosVehiculo();
-                break;
-            default:
-                System.out.println("Opción no válida.");
-                break;
+    
+    @Override
+    public String toString() {
+        return super.toString() + "[ Licencia: " + getNumLicencia() + " Estado: " + getEstadoConductor() + " Vehiculo: " + getVehiculo() + "]";
+    }
+    
+    
+    private void leerArchServicio() {
+        String[] servicios = {"viajes.txt", "encomiendas.txt"};
+
+        for (String nombreArchivo : servicios) {
+            ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
+            for (String linea : lineas) {
+                String[] datos = linea.split(",");
+                if (datos[0].equals(this.nombre)) {
+                    String s;
+                    switch (nombreArchivo) {
+                        case "viajes.txt":
+                            s = "Usted tiene asignado el Servicio Taxi\nDesde: " + datos[3] + "\nHasta: " + datos[4] + "\nFecha: " + datos[5] + "\nHora: " + datos[6] + "\nCantidad de personas: " + datos[7] + "\n\n";
+                            break;
+                        case "encomiendas.txt":
+                            s = "Usted Tiene asignado el servicio de encomienda: \nTipo de encomienda: "+datos[7]+"\nCantidad: "+datos[8]+"\nFecha: "+datos[5]+"\nHora "+datos[6]+"\nDesde: "+datos[3]+"\nHasta: "+datos[4];
+                            break;
+                        default:
+                            s = "";
+                            break;
+                    }
+                    serviciosAsignados.add(s);
+                }
+            }
         }
     }
+
+    public static String EstadoLicencia(String nombreArchivo, String nombre) {
+        ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
+        for (String linea : lineas) {
+            String[] datos = linea.split(",");
+            if (datos[0].equals(nombre)) {
+                return datos[2] + "," + datos[3] + "," + datos[4];
+            }
+        }
+        return "";
+    }
+    
+    public void ConsultarServAsignado() {
+        Scanner sc = new Scanner(System.in);
+        String validar;
+
+        do {
+            leerArchServicio();
+            if (serviciosAsignados.isEmpty()) {
+                System.out.println("Conductor sin servicios, se está trabajando");
+            } else {
+                for (String servicio : serviciosAsignados) {
+                    System.out.println(servicio);
+                }
+            }
+            System.out.println("¿Desea Solicitar otro Servicio? (si/no): ");
+            validar = sc.nextLine();
+        } while (validar.equalsIgnoreCase("si"));
+    }
+
 }
