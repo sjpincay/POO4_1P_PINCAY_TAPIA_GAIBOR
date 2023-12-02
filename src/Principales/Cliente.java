@@ -17,6 +17,7 @@ public class Cliente extends Usuario{
     private String tarjetaCredito;
     private ArrayList<Usuario> usuarios;
     private TipoUsuario tipoUsuario;
+    private ArrayList<Servicio> listaServicio = new ArrayList();
     
     
     /**
@@ -83,6 +84,16 @@ public class Cliente extends Usuario{
     public void mostrarDatos(){
         System.out.println();
     }
+    
+    
+    public ArrayList<Servicio> getListaServicio() {
+        return listaServicio;
+    }    
+    
+    public void setListaServicio(Servicio servicio) {
+        this.listaServicio.add(servicio);
+    }
+    
     /**
      * Permite al cliente seleccionar una opción del menú.
      *
