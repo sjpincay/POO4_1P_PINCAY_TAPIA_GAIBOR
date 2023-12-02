@@ -7,18 +7,16 @@ package Principales;
 import Enum.TipoUsuario;
 import java.util.ArrayList;
 import java.util.Scanner;
+import ManejoArchivos.*;
 
 /**
  * La clase Cliente hereda de la clase Usuario y representa a un cliente en el sistema.
  */
 public class Cliente extends Usuario{
 
-    private int edad;
     private String tarjetaCredito;
     private ArrayList<Usuario> usuarios;
-    private TipoUsuario tipoUsuario;
     private ArrayList<Servicio> listaServicio = new ArrayList();
-    
     
     /**
      * Constructor de la clase Cliente.
@@ -32,59 +30,18 @@ public class Cliente extends Usuario{
      * @param numCelular El número de celular del cliente.
      * @param tarjetaCredito El número de la tarjeta de crédito del cliente.
      */
-    public Cliente(String cedula,String nombre, String apellido,String user, String contraseña,String numCelular,int edad,String tarjetaCredito){
-        super(cedula,nombre,apellido, user,contraseña,numCelular);
-        this.edad=edad;
-        this.tarjetaCredito=tarjetaCredito;
-    }
-    
-    /**
-     * Obtiene la edad del cliente.
-     *
-     * @return La edad del cliente.
-     */
-    public int getEdad() {
-        return edad;
+    public Cliente(String tarjetaCredito, String cedula, String celular, String nombre, String apellido, String user, String contraseña, TipoUsuario tipo, int edad) {
+        super(cedula, celular, nombre, apellido, user, contraseña, tipo, edad);
+        this.tarjetaCredito = tarjetaCredito;
     }
 
-    /**
-     * Obtiene el número de la tarjeta de crédito del cliente.
-     *
-     * @return El número de la tarjeta de crédito del cliente.
-     */
     public String getTarjetaCredito() {
         return tarjetaCredito;
     }
-    /**
-     * Establece la edad del cliente.
-     *
-     * @param edad La nueva edad del cliente.
-     */
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-    /**
-     * Establece el número de la tarjeta de crédito del cliente.
-     *
-     * @param tarjetaCredito El nuevo número de la tarjeta de crédito del cliente.
-     */
+
     public void setTarjetaCredito(String tarjetaCredito) {
         this.tarjetaCredito = tarjetaCredito;
     }
-    /**
-     * Consulta los servicios disponibles para el cliente.
-     */    
-    @Override
-    public void consultarServicio() {
-        for(Usuario user:usuarios ){
-            System.out.println(user);
-        }
-    }
-    
-    public void mostrarDatos(){
-        System.out.println();
-    }
-    
     
     public ArrayList<Servicio> getListaServicio() {
         return listaServicio;
@@ -94,22 +51,49 @@ public class Cliente extends Usuario{
         this.listaServicio.add(servicio);
     }
     
-    /**
-     * Permite al cliente seleccionar una opción del menú.
-     *
-     * @return La opción seleccionada por el cliente.
-     */    
-    public int seleccionarOpcion() {
-        int opcion = 0;
-        Scanner sc = new Scanner(System.in);
-        do {
-            System.out.println("+++++++MENÚ+++++++");
-            System.out.println("1. Consultar Servicio");
-            System.out.println("2. Datos Vehiculo");
-            System.out.println("Por favor, elige una opción:");
-            opcion = sc.nextInt();
-        } while (opcion > 2 || opcion < 1);
-        return opcion;
+    
+    @Override
+    public String toString() {
+        return super.toString() + "[ Edad: " + getEdad() + " N.Tarjeta: " + getTarjetaCredito() + "]";
     }
     
+
+    public void ConsultarServicio() {
+    Scanner sc = new Scanner(System.in);
+    String validar;
+
+    do {
+        for (Servicio s : listaServicio) {
+            if (s instanceof Taxi) {
+                Taxi taxi = (Taxi) s;
+                System.out.println("Servicio de Taxi\n" + taxi.toString() + "\n");
+            }
+            if (s instanceof Encomienda) {
+                Encomienda enco = (Encomienda) s;
+                System.out.println("Servicio de Encomienda\n" + enco.toString() + "\n");
+            }
+        }
+        System.out.println("¿Solicitar otro Servicio? (si/no): ");
+        validar = sc.nextLine();
+    } while (validar.equalsIgnoreCase("si"));
+}
+    
+    //Lee el archivo, varifica la cedula
+    public static boolean validarcliente(String nombreArchivo, Usuario usuario) {
+        ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
+        for (String linea : lineas) {
+        String[] datos = linea.split(",");
+        String cedula = datos[0];
+            if (cedula.equals(usuario.getCedula())) {
+                return true;
+            }     
+        }
+        return false;
+    }
+    
+    //Agrega al cliente
+    public static void registrarCliente(int edad, String numTarjeta, String cedula, String nombreArchivo) {
+    String linea = cedula + "," + edad + "," + numTarjeta;
+    ManejoArchivos.EscribirArchivo(nombreArchivo, linea);
+   }
 }

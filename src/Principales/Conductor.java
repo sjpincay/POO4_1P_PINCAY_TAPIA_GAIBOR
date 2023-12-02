@@ -176,16 +176,13 @@ public class Conductor extends Usuario{
      *
      * @return Verdadero si el conductor está disponible, falso en caso contrario.
      */    
-    public boolean estadoDisponible(){
-        return estadoConductor == EstadoConductor.D; //Retorna  true si esta disponible 
+
     }
     /**
      * Verifica si el vehículo del conductor es un auto o una moto.
      *
      * @return El tipo de vehículo del conductor.
      */    
-    public TipoVehiculo esAutOMoto(){
-        return vehiculo.getTipoVehiculo();// Este método verifica si el vehículo del conductor es un auto o una moto
-    }
+    
     
 }
