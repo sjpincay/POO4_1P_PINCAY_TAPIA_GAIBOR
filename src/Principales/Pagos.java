@@ -72,7 +72,7 @@ public class Pagos {
     public void calcularTotal() {
         String total = null;
         for (Servicio servicio : servicio.getServicios()) {
-            total += servicio.calcularValorAPagar();
+            //total += servicio.calcularValorAPagar();
         }
         this.valorPagar = total;
     }
