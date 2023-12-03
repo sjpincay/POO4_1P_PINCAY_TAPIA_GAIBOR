@@ -271,9 +271,7 @@ public class Cliente extends Usuario {
                 case "D" -> {
                     TE = TipoEncomienda.DOCUMENTOS;
                 }
-                case "R" -> {
-                    TE = TipoEncomienda.ROPA;
-                }
+                
                 default -> {
                     TE = TipoEncomienda.DOCUMENTOS;
                 }

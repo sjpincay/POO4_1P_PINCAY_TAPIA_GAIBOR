@@ -1,4 +1,4 @@
-cedula,estado,codigoVehiculo
-0986353323,D,23
-0762637343,O,12
-1205454451,D,15
+cedula,numLicencia,estado,codigoVehiculo
+0986353323,A4J6M3,D,23
+0962637343,B8K0Y2,O,12
+1205454451,T0R4U3,D,15
