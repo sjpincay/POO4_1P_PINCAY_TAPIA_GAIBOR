@@ -28,13 +28,12 @@ public class ManejoArchivos {
             // Apertura del fichero y creacion de BufferedReader para poder
             // hacer una lectura comoda (disponer del metodo readLine()).
             archivo = new File(nombrearchivo);
-            fr = new FileReader(archivo,StandardCharsets.UTF_8);
+            fr = new FileReader(archivo.getAbsolutePath(),StandardCharsets.UTF_8);
             br = new BufferedReader(fr);
 
             // Lectura del fichero
             String linea;
             while ((linea = br.readLine()) != null) {
-                System.out.println(linea);
                 lineas.add(linea);
 
             }
@@ -63,14 +62,14 @@ public class ManejoArchivos {
      */
     public static void EscribirArchivo(String nombreArchivo, String linea) {
 
+        File archivo = new File(nombreArchivo);
+        String pathArchivo = archivo.getAbsolutePath();
         FileWriter fichero = null;
         BufferedWriter bw = null;
-        PrintWriter pw = null;
         try {
-            fichero = new FileWriter(nombreArchivo,true);
+            fichero = new FileWriter(pathArchivo,true);
             bw = new BufferedWriter(fichero);
-            bw.write(linea+"\n");
-            System.out.println("ksdsdlsd");
+            bw.write("\n"+linea);
 
         } catch (Exception e) {
             e.printStackTrace();
