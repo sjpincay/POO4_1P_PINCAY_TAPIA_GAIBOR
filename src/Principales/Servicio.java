@@ -29,6 +29,21 @@ public class  Servicio {
         this.valorP = r.nextDouble(41)+5;
         this.codigo=String.valueOf((int)(Math.random()*10000));
     }
+    
+    
+    
+    //para pagar con efectivo
+    public static double calcularValorPagar(double valorP){
+        double preciof = valorP;
+        return preciof;
+    }
+    
+    //para pagar con tarjeta
+    public static double calcularValorPagar(double valorP, double impuesto){
+        double total = impuesto * valorP;
+        return total;
+    }
+    
 
     public String getCodigo() {
         return codigo;
