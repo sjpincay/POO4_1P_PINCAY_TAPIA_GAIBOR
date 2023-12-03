@@ -2,21 +2,27 @@
 package Principales;
 
 import java.util.Random;
-    import Enum.TipoPago;
-    import java.util.Scanner;
+import Enum.TipoPago;
+import java.util.Scanner;
+import java.time.LocalDate;
 import ManejoArchivos.ManejoArchivos;
 
-
 public class Taxi extends Servicio {
-    Random rd = new Random();
-    private int cantidadPersonas;
-    final private double COSTOKM = 0.50 ;
-    private int valorAle = rd.nextInt(41)+5;
-    private double total = valorAle * COSTOKM;
 
-    public Taxi(Conductor conductorAsignado, int cantidadPersonas) {
-        super(conductorAsignado);
+    private int cantidadPersonas;
+    private int hora;
+    private TipoPago formaPago;
+    private int valorAleKM;
+    final private double COSTOKM;
+
+    public Taxi(String origen, String destino, LocalDate fecha, Conductor conductorAsignado, int cantidadPersonas, int hora, TipoPago formaPago) {
+        super(origen, destino, fecha, conductorAsignado);
         this.cantidadPersonas = cantidadPersonas;
+        this.hora = hora;
+        this.formaPago = formaPago;
+        Random rd = new Random();
+        this.valorAleKM = rd.nextInt(41) + 5;
+        this.COSTOKM = 0.50;
     }
 
     public int getCantidadPersonas() {
@@ -27,73 +33,87 @@ public class Taxi extends Servicio {
         this.cantidadPersonas = cantidadPersonas;
     }
 
-    public int getValorAle() {
-        return valorAle;
+    public int getHora() {
+        return hora;
     }
 
-    public void setValorAle(int valorAle) {
-        this.valorAle = valorAle;
+    public void setHora(int hora) {
+        this.hora = hora;
+    }
+
+    public TipoPago getFormaPago() {
+        return formaPago;
+    }
+
+    public void setFormaPago(TipoPago formaPago) {
+        this.formaPago = formaPago;
+    }
+
+    public int getValorAleKM() {
+        return valorAleKM;
+    }
+
+    public void setValorAleKM(int valorAleKM) {
+        this.valorAleKM = valorAleKM;
     }
 
     @Override
     public String toString() {
-        return "Taxi{" + "cantidadPersonas=" + cantidadPersonas + '}';
+        return "Taxi{" + "cantidadPersonas=" + cantidadPersonas + ", hora=" + hora + ", formaPago=" + formaPago + ", COSTOKM=" + COSTOKM + '}';
     }
-   
-    
-    
-    
-    
-    
-    
+
     @Override
-     public void calcularValorAPagar(){
-          double total = valorAle * COSTOKM;
-          System.out.println("el valor a pagar es:"+total);
-     }
-          
-           public void calcularValorAPagar(TipoPago tarjeta){
-               double total = valorAle * COSTOKM +(valorAle * COSTOKM) * 0.15;
-               System.out.println("el valor a pagar con tarjeta es:"+total);
-           }
-          
-          
-        
-    
-     
-     
-     public boolean confirmarViaje(){
-         Scanner entrada = new Scanner(System.in);
-         boolean confViaje = false;
-       
-         do {
-            System.out.print("¿Desea confirmar su viaje? (Sí/No): ");
-            String respuesta = entrada.nextLine().trim().toLowerCase();
-            
-            if (respuesta.equals("si") || respuesta.equals("sí")) {
+    public void calcularValorAPagar() {
+        double total = this.getValorAleKM() * COSTOKM;
+        this.setValorAPagar(total);
+
+    }
+
+    public void calcularValorAPagar(TipoPago tipo) {
+        if (tipo == TipoPago.E) {
+            double total = this.getValorAleKM() * COSTOKM;
+            this.setValorAPagar(total);
+        }else {
+            double total = this.getValorAleKM() * COSTOKM + (this.getValorAleKM() * COSTOKM) * 0.15;
+            this.setValorAPagar(total);
+        }
+    }
+
+    public boolean confirmarViaje() {
+        Scanner entrada = new Scanner(System.in);
+        boolean confViaje = false;
+        String respuesta;
+        do {
+            System.out.print("¿Desea confirmar su viaje? (s/n): ");
+            respuesta = entrada.next();
+            entrada.nextLine();
+            if (respuesta.equals("s")) {
                 confViaje = true;
-                
-                } else if (respuesta.equals("no")) {
+
+            } else{
                 confViaje = false;
                 System.out.println("Se ha cancelado el viaje. Volviendo al menú inicial.");
-                }
-                } while (!confViaje);
-         return confViaje;
-     }
-     
-//     public void crearServicioTaxi(){
-//         Conductor conductorSeleccionado = seleccionarConductorDisponible();
-//          if (conductorSeleccionado != null) {
-//              System.out.println("Servicio de taxi creado con el conductor: " + conductorSeleccionado.getNombre());
-//          } else {
-//            System.out.println("No hay conductores disponibles con autos en este momento.");
-//        }
-//     }
-     
-     
-     public void guardarEnArchivo(){
-        String datosServicio = "numero de pasajeros" + cantidadPersonas + "distanciaKM"+valorAle+"subtotal"+total;
-        ManejoArchivos.EscribirArchivo("viajes.txt", datosServicio);
-     }
-}
+            }
+        } while (!(respuesta.equals("s")) && !(respuesta.equals("n")));
+        return confViaje;
+    }
 
+    public void escribirArchivoViaje() {
+        String lineaAEscribir = this.getID() + "," + this.getCantidadPersonas() + "," + this.getValorAleKM() + "," + this.getValorAPagar();
+        ManejoArchivos.EscribirArchivo("viajes.txt", lineaAEscribir);
+    }
+    
+    @Override
+    public void mostrarInformacion(){
+        System.out.println();
+        System.out.println("/**************************************/");
+        System.out.println("Tipo: Viaje");
+        System.out.println("Pasajeros: " + Integer.toString(this.getCantidadPersonas()));
+        System.out.println("Fecha: " + this.getFecha().toString());
+        System.out.println("Hora: " + Integer.toString(this.getHora()) + ":00");
+        System.out.println("Origen: " + this.getOrigen());
+        System.out.println("Destino: " + this.getDestino());
+        System.out.println("Valor a Pagar: " + Double.toString(this.getValorAPagar()));
+        System.out.println();
+    }
+}

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 
 package Principales;
 import Enum.TipoVehiculo;
@@ -16,6 +13,14 @@ public class Vehiculo {
     private TipoVehiculo tipoVehiculo;
     private int codigoVehiculo;
 
+    public Vehiculo(String placa, String modelo, String marca, TipoVehiculo tipoVehiculo, int codigoVehiculo) {
+        this.placa = placa;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tipoVehiculo = tipoVehiculo;
+        this.codigoVehiculo = codigoVehiculo;
+    }
+    
 
     /**
      * Muestra los datos del vehículo.
@@ -70,4 +75,9 @@ public class Vehiculo {
         return codigoVehiculo;
     }
 
+    @Override
+    public String toString() {
+        return "Vehiculo{" + "placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", tipoVehiculo=" + tipoVehiculo + ", codigoVehiculo=" + codigoVehiculo + '}';
+    }
+    
 }   

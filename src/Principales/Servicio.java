@@ -1,135 +1,115 @@
 
 package Principales;
 
-import ManejoArchivos.*;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * La clase Servicio es una clase abstracta que representa un servicio en el sistema.
  */
-public class  Servicio {
-    protected String codigo;
-    protected String conductor;
-    protected String Pinicio,Pfin,datePago;
-    protected static double valorP;
-    Random r = new Random();
+
+public abstract class  Servicio {
+    
+    public static String generateRandomId() {
+        StringBuilder idBuilder = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < 10; i++) {
+            // Asegurar el primer digito no es cero
+            if (i == 0) {
+                idBuilder.append(random.nextInt(9) + 1);
+            } else {
+                idBuilder.append(random.nextInt(10));
+            }
+        }
+
+        return idBuilder.toString();
+    }
+    
+    private String ID;
+    private String origen;
+    private String destino;
+    private LocalDate fecha;
+    private Conductor conductorAsignado;
+    private double valorAPagar;
     /**
      * Constructor de la clase Servicio.
      *
+     * @param origen
+     * @param destino
+     * @param fecha
      * @param conductorAsignado El conductor asignado al servicio.
+     * @param valorAPagar
      */ 
-    public Servicio(String Pinicio, String Pfin ,String datePago) {
-        this.Pinicio = Pinicio;
-        this.Pfin = Pfin;
-        this.datePago= datePago;
-        this.valorP = r.nextDouble(41)+5;
-        this.codigo=String.valueOf((int)(Math.random()*10000));
-    }
-    
-    //para pagar con efectivo
-    public static double calcularValorPagar(double valorP){
-        double preciof = valorP;
-        return preciof;
-    }
-    
-    //para pagar con tarjeta
-    public static double calcularValorPagar(double valorP, double impuesto){
-        double total = impuesto * valorP;
-        return total;
-    }
-    
-    public static String metodoPago(){
-        String metodo="";
-        double valor=0;
-        int validar=1;
-        Scanner sc =new Scanner(System.in);
-        while (validar!=0){
-            System.out.println("Elija una opción de pago:\n1.Pago en efectivo\n2.Pago con tarjeta\nIngrese una opcion:");
-            int op =sc.nextInt();
-            sc.nextLine();
-            switch (op){
-                case 1:
-                    valor = calcularValorPagar(valorP);
-                    validar=0;
-                    metodo= "Pago en efectivo";
-                    break;
-                case 2:
-                    double incremento = 0.50;
-                    valor = calcularValorPagar(valorP,incremento);
-                    validar=0;
-                    metodo="Pago con trajeta";
-                    break;
-                default:
-                    System.out.println("Opcion Incorrecta. Vuelva a elegir\n");
-                    validar=1;
-            }
-        }
-        valorP=valor;
-    return metodo;
+    public Servicio(String origen, String destino, LocalDate fecha, Conductor conductorAsignado) {
+        this.ID = generateRandomId();
+        this.origen = origen;
+        this.destino = destino;
+        this.fecha = fecha;
+        this.conductorAsignado = conductorAsignado;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getOrigen() {
+        return origen;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setOrigen(String origen) {
+        this.origen = origen;
     }
 
-    public String getConductor() {
-        return conductor;
+    public String getDestino() {
+        return destino;
     }
 
-    public void setConductor(String conductor) {
-        this.conductor = conductor;
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
-    public String getPinicio() {
-        return Pinicio;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public void setPinicio(String Pinicio) {
-        this.Pinicio = Pinicio;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
-    public String getPfin() {
-        return Pfin;
+    public Conductor getConductorAsignado() {
+        return conductorAsignado;
     }
 
-    public void setPfin(String Pfin) {
-        this.Pfin = Pfin;
+    public void setConductorAsignado(Conductor conductorAsignado) {
+        this.conductorAsignado = conductorAsignado;
     }
 
-    public String getDatePago() {
-        return datePago;
+    public double getValorAPagar() {
+        return valorAPagar;
     }
 
-    public void setDatePago(String datePago) {
-        this.datePago = datePago;
+    public void setValorAPagar(double valorAPagar) {
+        this.valorAPagar = valorAPagar;
     }
-    
-    public String asignarConductor(String tipoVehiculo){
-        String conductor = "";
-        String nombreArchivo = "conductor.txt";
 
-        ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
-        for (String linea : lineas) {
-            String[] datos = linea.split(",");
-            if (datos[3].equals("D")) {
-                String tipo = Conductor.tipo("vehiculo.txt", datos[4]);
-                if (tipo.equals(tipoVehiculo)) {
-                    conductor = datos[0];
-                }
-            }
-        }
-        return conductor;
+    public String getID() {
+        return ID;
     }
- 
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     @Override
     public String toString() {
-        return "\nConductor: " + conductor + "\nFecha: " + datePago + "\nValor a pagar: " + valorP + "\nCodigo: " + codigo;
+        return "Servicio{" + "ID=" + ID + ", origen=" + origen + ", destino=" + destino + ", fecha=" + fecha + ", conductorAsignado=" + conductorAsignado + ", valorAPagar=" + valorAPagar + '}';
     }
-     
+
+    /**
+     * Método abstracto para calcular el valor a pagar por el servicio.
+     * Este método debe ser implementado en las clases que hereden de Servicio.
+     */ 
+    public abstract void calcularValorAPagar();
+    
+    public abstract void mostrarInformacion();
 }
+
+
