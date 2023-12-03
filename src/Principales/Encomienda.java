@@ -108,7 +108,7 @@ public class Encomienda extends Servicio {
     
     public void escribirArchivoEncomienda(){
         String lineaAEscribir = this.getID() + "," + this.getTipoEncomienda() + "," + Integer.toString(this.getCantidadProducto()) + "," + Double.toString(this.getPeso()) + "," + Double.toString(this.getValorAPagar());
-        ManejoArchivos.EscribirArchivo("viajes.txt", lineaAEscribir);
+        ManejoArchivos.EscribirArchivo("encomiendas.txt", lineaAEscribir);
     }
 
     @Override
