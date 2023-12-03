@@ -3,21 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Principales;
+
 import Enum.EstadoConductor;
-import Enum.TipoUsuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Enum.TipoVehiculo;
-import ManejoArchivos.*;
+
 /**
- * La clase Conductor hereda de la clase Usuario y representa a un conductor en el sistema.
+ * La clase Conductor hereda de la clase Usuario y representa a un conductor en
+ * el sistema.
  */
-public class Conductor extends Usuario{
+public class Conductor extends Usuario {
+
     private String numLicencia;
     private Vehiculo vehiculo;
     private EstadoConductor estadoConductor;
-    private ArrayList<String> serviciosAsignados = new ArrayList<>();
-    private TipoVehiculo tipoVehiculo;
+    private ArrayList<Servicio> serviciosAsignados;
+
     /**
      * Constructor de la clase Conductor.
      *
@@ -27,136 +29,121 @@ public class Conductor extends Usuario{
      * @param cedula La cédula del conductor.
      * @param nombre El nombre del conductor.
      * @param apellido El apellido del conductor.
-     * @param edad La edad del conductor.
      * @param user El nombre de usuario del conductor.
      * @param contraseña La contraseña del conductor.
      * @param numCelular El número de celular del conductor.
      */
-    public Conductor(String numLicencia, Vehiculo vehiculo, EstadoConductor estadoConductor, String cedula, String celular, String nombre, String apellido, String user, String contraseña, TipoUsuario tipo) {
-        super(cedula, celular, nombre, apellido, user, contraseña, tipo);
+    public Conductor(String numLicencia, Vehiculo vehiculo, EstadoConductor estadoConductor, String cedula, String nombre, String apellido, String user, String contraseña, String numCelular) {
+        super(cedula, nombre, apellido, user, contraseña, numCelular);
         this.numLicencia = numLicencia;
         this.vehiculo = vehiculo;
         this.estadoConductor = estadoConductor;
+        this.serviciosAsignados = new ArrayList<>();
     }
 
-    public String getNumLicencia() {
-        return numLicencia;
+    public ArrayList<Servicio> getServiciosAsignados() {
+        return serviciosAsignados;
     }
 
-    public void setNumLicencia(String numLicencia) {
-        this.numLicencia = numLicencia;
+    public void setServiciosAsignados(ArrayList<Servicio> serviciosAsignados) {
+        this.serviciosAsignados = serviciosAsignados;
     }
-
+    
+    /**
+     * Obtiene el vehículo del conductor.
+     *
+     * @return El vehículo del conductor.
+     */
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    /**
+     * Obtiene el número de licencia del conductor.
+     *
+     * @return El número de licencia del conductor.
+     */
+    public String getNumLicencia() {
+        return numLicencia;
     }
 
+    /**
+     * Establece el número de licencia del conductor.
+     *
+     * @param numLicencia El nuevo número de licencia del conductor.
+     */
+    public void setNumLicencia(String numLicencia) {
+        this.numLicencia = numLicencia;
+    }
+
+    /**
+     * Obtiene el estado del conductor.
+     *
+     * @return El estado del conductor.
+     */
     public EstadoConductor getEstadoConductor() {
         return estadoConductor;
     }
 
-    public void setEstadoConductor(EstadoConductor estadoConductor) {
-        this.estadoConductor = estadoConductor;
-    }
-
-    public TipoVehiculo getTipoVehiculo() {
-        return tipoVehiculo;
-    }
-
-    public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
-        this.tipoVehiculo = tipoVehiculo;
-    }
-
-    public ArrayList<String> getServiciosAsignados() {
-        return serviciosAsignados;
-    }
-
-    public void setServiciosAsignados(ArrayList<String> serviciosAsignados) {
-        this.serviciosAsignados = serviciosAsignados;
-    }
-
-
-    public static String tipo(String nombreArchivo, String code) {
-        ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
-        for (String linea : lineas) {
-            String[] datos = linea.split(",");
-            if (datos[0].equals(code)) {
-                return datos[4];
-            }
-        }
-        return "";
-    }
-    
+    /**
+     * Consulta los servicios asignados al conductor.
+     */
     @Override
-    public void mostrarMenu(){
-        super.mostrarMenu();
-        System.out.println("1. Consultar servicio asignado");
-        
-    }
-    
-    @Override
-    public String toString() {
-        return super.toString() + "[ Licencia: " + getNumLicencia() + " Estado: " + getEstadoConductor() + " Vehiculo: " + getVehiculo() + "]";
-    }
-    
-    
-    private void leerArchServicio() {
-        String[] servicios = {"viajes.txt", "encomiendas.txt"};
-
-        for (String nombreArchivo : servicios) {
-            ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
-            for (String linea : lineas) {
-                String[] datos = linea.split(",");
-                if (datos[0].equals(this.nombre)) {
-                    String s;
-                    switch (nombreArchivo) {
-                        case "viajes.txt":
-                            s = "Usted tiene asignado el Servicio Taxi\nDesde: " + datos[3] + "\nHasta: " + datos[4] + "\nFecha: " + datos[5] + "\nHora: " + datos[6] + "\nCantidad de personas: " + datos[7] + "\n\n";
-                            break;
-                        case "encomiendas.txt":
-                            s = "Usted Tiene asignado el servicio de encomienda: \nTipo de encomienda: "+datos[7]+"\nCantidad: "+datos[8]+"\nFecha: "+datos[5]+"\nHora "+datos[6]+"\nDesde: "+datos[3]+"\nHasta: "+datos[4];
-                            break;
-                        default:
-                            s = "";
-                            break;
-                    }
-                    serviciosAsignados.add(s);
-                }
-            }
+    public void consultarServicio() {
+        System.out.println();
+        ArrayList<Servicio> servicios = this.getServiciosAsignados();
+        if(servicios.isEmpty()){
+            System.out.println("NO HAY INFORMACION PARA MOSTRAR");
+            System.out.println();
+        }else{
+            for (Servicio i : servicios) {
+            i.mostrarInformacion();
+            System.out.println();
+        }
         }
     }
 
-    public static String EstadoLicencia(String nombreArchivo, String nombre) {
-        ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
-        for (String linea : lineas) {
-            String[] datos = linea.split(",");
-            if (datos[0].equals(nombre)) {
-                return datos[2] + "," + datos[3] + "," + datos[4];
-            }
-        }
-        return "";
+    /**
+     * Muestra los datos del vehículo del conductor.
+     */
+    public void mostrarDatosVehiculo() {
+        //mostrar los datos del vehículo del conductor
+        System.out.println();
+        System.out.println(vehiculo.mostrarDatos());
+        System.out.println();
     }
-    
-    public void ConsultarServAsignado() {
+
+    /**
+     * Permite al conductor seleccionar una opción del menú.
+     *
+     * @return La opción seleccionada por el conductor.
+     */
+    public int seleccionarOpcion() {
+        int opcion = 0;
         Scanner sc = new Scanner(System.in);
-        String validar;
-
         do {
-            leerArchServicio();
-            if (serviciosAsignados.isEmpty()) {
-                System.out.println("Conductor sin servicios, se está trabajando");
-            } else {
-                for (String servicio : serviciosAsignados) {
-                    System.out.println(servicio);
+            System.out.println("+++++++MENU CONDUCTOR++++++");
+            System.out.println("1. Consultar Servicio");
+            System.out.println("2. Datos Vehiculo");
+            System.out.println("3. Salir");
+            System.out.println("Por favor, elige una opción:");
+            opcion = sc.nextInt();
+            sc.nextLine();
+            switch (opcion) {
+                case 1 -> {
+                    this.consultarServicio();
+                }
+                case 2 ->{
+                    this.mostrarDatosVehiculo();
+                }
+                case 3 ->{
+                    break;
+                }
+                default ->{
+                    System.out.println("Opción incorrecta. Vuelva a intentarlo.");
                 }
             }
-            System.out.println("¿Desea Solicitar otro Servicio? (si/no): ");
-            validar = sc.nextLine();
-        } while (validar.equalsIgnoreCase("si"));
+        } while (opcion != 3);
+        return opcion;
     }
-
 }
