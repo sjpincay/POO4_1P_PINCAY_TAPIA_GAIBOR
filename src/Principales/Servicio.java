@@ -1,12 +1,10 @@
 
 package Principales;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.nio.charset.StandardCharsets;
+import ManejoArchivos.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * La clase Servicio es una clase abstracta que representa un servicio en el sistema.
@@ -30,8 +28,6 @@ public class  Servicio {
         this.codigo=String.valueOf((int)(Math.random()*10000));
     }
     
-    
-    
     //para pagar con efectivo
     public static double calcularValorPagar(double valorP){
         double preciof = valorP;
@@ -44,6 +40,35 @@ public class  Servicio {
         return total;
     }
     
+    public static String metodoPago(){
+        String metodo="";
+        double valor=0;
+        int validar=1;
+        Scanner sc =new Scanner(System.in);
+        while (validar!=0){
+            System.out.println("Elija una opción de pago:\n1.Pago en efectivo\n2.Pago con tarjeta\nIngrese una opcion:");
+            int op =sc.nextInt();
+            sc.nextLine();
+            switch (op){
+                case 1:
+                    valor = calcularValorPagar(valorP);
+                    validar=0;
+                    metodo= "Pago en efectivo";
+                    break;
+                case 2:
+                    double incremento = 0.50;
+                    valor = calcularValorPagar(valorP,incremento);
+                    validar=0;
+                    metodo="Pago con trajeta";
+                    break;
+                default:
+                    System.out.println("Opcion Incorrecta. Vuelva a elegir\n");
+                    validar=1;
+            }
+        }
+        valorP=valor;
+    return metodo;
+    }
 
     public String getCodigo() {
         return codigo;
@@ -84,51 +109,21 @@ public class  Servicio {
     public void setDatePago(String datePago) {
         this.datePago = datePago;
     }
-
+    
     public String asignarConductor(String tipoVehiculo){
-        String conductor="";
-        String nombrearchivo="conductor.txt";
-        File archivo = null;
-        FileReader FR = null;
-        BufferedReader BR = null;
+        String conductor = "";
+        String nombreArchivo = "conductor.txt";
 
-        try {
-            // Apertura del fichero y creacion de BufferedReader para poder
-            // hacer una lectura comoda (disponer del metodo readLine()).
-            archivo = new File(nombrearchivo);
-            FR = new FileReader(archivo,StandardCharsets.UTF_8);
-            BR = new BufferedReader(FR);
-
-            // Lectura del fichero
-            String linea;
-            while ((linea = BR.readLine()) != null) {
-                String[] datos=linea.split(",");
-                if (datos[3].equals("D")){
-                    String tipo = Conductor.tipo("vehiculo.txt", datos[4]);
-                    if (tipo.equals(tipoVehiculo)){
-                       conductor=datos[0]; 
-                    }
+        ArrayList<String> lineas = ManejoArchivos.LeeFichero(nombreArchivo);
+        for (String linea : lineas) {
+            String[] datos = linea.split(",");
+            if (datos[3].equals("D")) {
+                String tipo = Conductor.tipo("vehiculo.txt", datos[4]);
+                if (tipo.equals(tipoVehiculo)) {
+                    conductor = datos[0];
                 }
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // En el finally cerramos el fichero, para asegurarnos
-            // que se cierra tanto si todo va bien como si salta 
-            // una excepcion.
-            try {
-                if (null != FR) {
-                    FR.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
             }
         }
-        
-        
-        this.conductor=conductor;
         return conductor;
     }
  

@@ -116,13 +116,6 @@ public static void crearSvEncomienda(Cliente cliente) {
         }
     } while (validar == 1);
 }
-    
-    
-    /**
-     * Calcula el valor a pagar por la encomienda.
-     */    
-
-        
    
     
 }
