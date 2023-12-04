@@ -5,7 +5,8 @@
 package Enum;
 
 /**
- *
+ *Clase enum que representa el estado del conductor
+ * Ocupado o Desocupado
  * @author sjpin
  */
 public enum EstadoConductor {

@@ -7,6 +7,7 @@ package Enum;
 /**
  *
  * @author sjpin
+ * Esta clase enum TipoUsuario representa si el usuario es Cliente o Conductor
  */
 public enum TipoUsuario {
     C,R

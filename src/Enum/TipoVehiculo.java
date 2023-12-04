@@ -7,6 +7,7 @@ package Enum;
 /**
  *
  * @author sjpin
+ * Esta clase enum TipoVehiculo representa si es moto y auto
  */
 public enum TipoVehiculo {
     A,M
