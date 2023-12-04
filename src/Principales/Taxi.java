@@ -9,6 +9,9 @@ import ManejoArchivos.ManejoArchivos;
 /**
  * 
  * @author sjpin
+ * 
+ * La clase Taxi representa el vehiculo donde van hay especificaciones 
+ * de pasajeros, hora, forma de pago y recorrido
  */
 public class Taxi extends Servicio {
     /**

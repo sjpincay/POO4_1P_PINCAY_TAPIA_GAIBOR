@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Verónica
+ * Esta clase ManejoArchivos se leen los archivos, se validan y se escriben 
  */
 public class ManejoArchivos {
     /**

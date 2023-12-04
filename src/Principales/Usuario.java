@@ -9,6 +9,8 @@ import Enum.TipoUsuario;
 /**
  *
  * @author sjpin
+ * 
+ * La clase Usuario tiene atributos que serán heredados para cliente y conductor
  */
 public abstract class Usuario {
 /**

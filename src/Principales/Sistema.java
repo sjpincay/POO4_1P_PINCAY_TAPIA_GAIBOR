@@ -15,6 +15,9 @@ import java.util.Scanner;
 /**
  *
  * @author sjpin
+ * La clase Sistema representa el sistema principal del programa.
+ * Contiene métodos para inicializar el sistema, crear listas de usuarios y vehículos, y manejar la interacción con los usuarios.
+ * Utiliza archivos para cargar y almacenar información sobre usuarios, clientes, conductores y vehículos.
  */
 public class Sistema {
     
