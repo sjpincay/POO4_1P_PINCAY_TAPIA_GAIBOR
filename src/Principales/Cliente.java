@@ -16,7 +16,9 @@ import ManejoArchivos.ManejoArchivos;
  * sistema.
  */
 public class Cliente extends Usuario {
-
+    /**
+     * declaración de las variables
+     */
     private int edad;
     private String tarjetaCredito;
     private ArrayList<Servicio> serviciosSolicitados;

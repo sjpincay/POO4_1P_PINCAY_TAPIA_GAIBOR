@@ -11,7 +11,9 @@ import java.time.LocalDate;
  * La clase Pagos representa un pago en el sistema.
  */
 public class Pagos {
-
+    /**
+     * declaracion de las variables
+     */
     private int idPago;
     private LocalDate datePago;
     private Servicio servicio;
@@ -38,26 +40,36 @@ public class Pagos {
         this.valorPagar = valorPagar;
         this.datePago = datePago;
     }
-
+    /**
+     * 
+     * @param idPago 
+     */
     public void setIdPago(int idPago) {
         this.idPago = idPago;
     }
-
+    /**
+     * 
+     * @param datePago 
+     */
     public void setDatePago(LocalDate datePago) {
         this.datePago = datePago;
     }
-
+    /**
+     * 
+     * @param servicio 
+     */
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
-
+    /**
+     * 
+     * @param cliente 
+     */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
     /**
-     * Obtiene el ID del pago.
-     *
      * @return El ID del pago.
      */
     public int getIdPago() {
@@ -65,41 +77,55 @@ public class Pagos {
     }
 
     /**
-     * Obtiene la fecha del pago.
-     *
      * @return La fecha del pago.
      */
     public LocalDate getDatePago() {
         return datePago;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public TipoPago getMetodoPago() {
         return metodoPago;
     }
-
+    /**
+     * 
+     * @param metodoPago 
+     */
     public void setMetodoPago(TipoPago metodoPago) {
         this.metodoPago = metodoPago;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public double getValorPagar() {
         return valorPagar;
     }
-
+    /**
+     * 
+     * @param valorPagar 
+     */
     public void setValorPagar(double valorPagar) {
         this.valorPagar = valorPagar;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public static int getCodigo() {
         return codigo;
     }
-
+    /**
+     * 
+     * @param codigo 
+     */
     public static void setCodigo(int codigo) {
         Pagos.codigo = codigo;
     }
 
     /**
-     * Obtiene el servicio asociado al pago.
-     *
      * @return El servicio asociado al pago.
      */
     public Servicio getServicio() {
@@ -107,14 +133,15 @@ public class Pagos {
     }
 
     /**
-     * Obtiene el cliente que realizó el pago.
-     *
      * @return El cliente que realizó el pago.
      */
     public Cliente getCliente() {
         return cliente;
     }
-
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
         return "Pagos{" + "idPago=" + idPago + ", datePago=" + datePago + ", servicio=" + servicio + ", cliente=" + cliente + ", metodoPago=" + metodoPago + ", valorPagar=" + valorPagar + '}';

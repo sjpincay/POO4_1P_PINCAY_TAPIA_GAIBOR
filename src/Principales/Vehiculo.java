@@ -7,12 +7,22 @@ import Enum.TipoVehiculo;
  * La clase Vehiculo representa un vehículo en el sistema.
  */
 public class Vehiculo {
+    /**
+     * declaracion de variables
+     */
     private String placa;
     private String modelo;
     private String marca;
     private TipoVehiculo tipoVehiculo;
     private int codigoVehiculo;
-
+    /**
+     * Constructores de la clase Vehiculo
+     * @param placa
+     * @param modelo
+     * @param marca
+     * @param tipoVehiculo
+     * @param codigoVehiculo 
+     */
     public Vehiculo(String placa, String modelo, String marca, TipoVehiculo tipoVehiculo, int codigoVehiculo) {
         this.placa = placa;
         this.modelo = modelo;
@@ -20,7 +30,6 @@ public class Vehiculo {
         this.tipoVehiculo = tipoVehiculo;
         this.codigoVehiculo = codigoVehiculo;
     }
-    
 
     /**
      * Muestra los datos del vehículo.
@@ -35,40 +44,30 @@ public class Vehiculo {
            "Código de Vehiculo: " + codigoVehiculo;
     }
     /**
-     * Obtiene la placa del vehículo.
-     *
      * @return La placa del vehículo.
      */
     public String getPlaca() {
         return placa;
     }
     /**
-     * Obtiene el modelo del vehículo.
-     *
      * @return El modelo del vehículo.
      */
     public String getModelo() {
         return modelo;
     }
     /**
-     * Obtiene la marca del vehículo.
-     *
      * @return La marca del vehículo.
      */
     public String getMarca() {
         return marca;
     }
     /**
-     * Obtiene el tipo de vehículo.
-     *
      * @return El tipo de vehículo.
      */
     public TipoVehiculo getTipoVehiculo() {
         return tipoVehiculo;
     }
     /**
-     * Obtiene el código del vehículo.
-     *
      * @return El código del vehículo.
      */
     public int getCodigoVehiculo() {

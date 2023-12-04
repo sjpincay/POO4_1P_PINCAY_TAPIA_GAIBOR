@@ -14,7 +14,9 @@ import Enum.TipoVehiculo;
  * el sistema.
  */
 public class Conductor extends Usuario {
-
+    /**
+     * declaración de las variables
+     */
     private String numLicencia;
     private Vehiculo vehiculo;
     private EstadoConductor estadoConductor;
@@ -40,18 +42,22 @@ public class Conductor extends Usuario {
         this.estadoConductor = estadoConductor;
         this.serviciosAsignados = new ArrayList<>();
     }
-
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Servicio> getServiciosAsignados() {
         return serviciosAsignados;
     }
-
+    /**
+     * 
+     * @param serviciosAsignados 
+     */
     public void setServiciosAsignados(ArrayList<Servicio> serviciosAsignados) {
         this.serviciosAsignados = serviciosAsignados;
     }
     
     /**
-     * Obtiene el vehículo del conductor.
-     *
      * @return El vehículo del conductor.
      */
     public Vehiculo getVehiculo() {
@@ -59,27 +65,21 @@ public class Conductor extends Usuario {
     }
 
     /**
-     * Obtiene el número de licencia del conductor.
-     *
-     * @return El número de licencia del conductor.
+     * @return obtiene el número de licencia del conductor.
      */
     public String getNumLicencia() {
         return numLicencia;
     }
 
     /**
-     * Establece el número de licencia del conductor.
-     *
-     * @param numLicencia El nuevo número de licencia del conductor.
+     * @param numLicencia Establece el nuevo número de licencia del conductor.
      */
     public void setNumLicencia(String numLicencia) {
         this.numLicencia = numLicencia;
     }
 
     /**
-     * Obtiene el estado del conductor.
-     *
-     * @return El estado del conductor.
+     * @return Obtiene el estado del conductor.
      */
     public EstadoConductor getEstadoConductor() {
         return estadoConductor;
