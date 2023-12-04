@@ -17,13 +17,22 @@ import java.util.Scanner;
  * @author sjpin
  */
 public class Sistema {
-
+    
     /**
-     * @param args the command line arguments
+     * Lista de usuarios registrados en el sistema 
      */
     static ArrayList<Usuario> listUsuarios = new ArrayList<>();
+    /**
+     * Lista de vehiculos registrados en el sistema
+     */
     static ArrayList<Vehiculo> listVehiculos = new ArrayList<>();
-
+    /**
+     * 
+     * @param archivoUsuarios
+     * @param archivoClientes
+     * @param archivoConductores
+     * @param archivoVehiculos 
+     */
     public static void crearListaU(String archivoUsuarios, String archivoClientes, String archivoConductores, String archivoVehiculos) {
         //Creamos las listas en formato String con los datos a utilizar para la lista de Usuarios(Pueden ser Clientes o Conductores). Removemos la primera linea que no nos interesa.
         ArrayList<String> usuariosString = ManejoArchivos.LeeFichero(archivoUsuarios);
@@ -96,7 +105,10 @@ public class Sistema {
         }
 
     }
-
+    /**
+     * 
+     * @param archivoVehiculos 
+     */
     public static void crearListaV(String archivoVehiculos) {
         ArrayList<String> vehiculosString = ManejoArchivos.LeeFichero(archivoVehiculos);
         vehiculosString.remove(0);
@@ -110,19 +122,26 @@ public class Sistema {
 
         }
     }
-
-    //Inicializamos el sistema creando las listas de Usuarios y Vehiculos.
+    /**
+     * Inicializamos el sistema creando las listas de Usuarios y Vehiculos.
+     * @param archivoUsuarios
+     * @param archivoClientes
+     * @param archivoConductores
+     * @param archivoVehiculos 
+     */
+   
     public static void inicializar(String archivoUsuarios, String archivoClientes, String archivoConductores, String archivoVehiculos) {
         crearListaU(archivoUsuarios, archivoClientes, archivoConductores, archivoVehiculos);
         crearListaV(archivoVehiculos);
     }
-
+    /**
+     * Mostramos la bienvenida al usuario y solicitamos la autenticacion.
+     * Iniciamos un bucle infinito para permitir intentos de inicio de sesión.
+     * SI la autenticación es exitosa, redirigimos al usuario 
+     * @param args 
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        /*
-        MOstramos la bienvenida al Usuario al sistema
-        para obtener los datos(user y contraseña)
-         */
         String pathUsuarios = "usuarios.txt";
         String pathClientes = "cliente.txt";
         String pathConductores = "conductor.txt";

@@ -1,3 +1,4 @@
 numeroServicio,tipoEncomienda,cantidadProductos,peso,subtotal
 25387,MEDICINA,4,4.67,8.00
 7753907390,DOCUMENTOS,3,54.3,7.0
+2775983308,MEDICAMENTO,3,34.5,8.05
