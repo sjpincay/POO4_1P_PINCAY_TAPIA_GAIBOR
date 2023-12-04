@@ -8,21 +8,29 @@ import java.util.Scanner;
 /**
  * La clase Encomienda hereda de la clase Servicio y representa un servicio de
  * encomienda en el sistema.
+ *
+ * @author sjpin
  */
 public class Encomienda extends Servicio {
-
+    /**
+     * declaración de las variables
+     */
     private int cantidadProducto;
     private double peso;
     private int hora;
     private TipoEncomienda tipoEncomienda;
-
-    /**
-     * Constructor de la clase Encomienda.
-     *
-     * @param conductorAsignado El conductor asignado a la encomienda.
-     */
     
-
+    /**
+     * Constructor de la clase Encomienda
+     * @param cantidadProducto
+     * @param peso
+     * @param hora
+     * @param tipoEncomienda
+     * @param origen
+     * @param destino
+     * @param fecha
+     * @param conductorAsignado 
+     */
     public Encomienda(int cantidadProducto, double peso, int hora, TipoEncomienda tipoEncomienda, String origen, String destino, LocalDate fecha, Conductor conductorAsignado) {
         super(origen, destino, fecha, conductorAsignado);
         this.cantidadProducto = cantidadProducto;
@@ -30,39 +38,62 @@ public class Encomienda extends Servicio {
         this.hora = hora;
         this.tipoEncomienda = tipoEncomienda;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public int getHora() {
         return hora;
     }
-
+    /**
+     * 
+     * @param hora 
+     */
     public void setHora(int hora) {
         this.hora = hora;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int getCantidadProducto() {
         return cantidadProducto;
     }
-
+    /**
+     * 
+     * @param cantidadProducto 
+     */
     public void setCantidadProducto(int cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public double getPeso() {
         return peso;
     }
-
+    /**
+     * 
+     * @param peso 
+     */
     public void setPeso(double peso) {
         this.peso = peso;
     }
-
+    /**
+     * 
+     * @return 
+     */
     public TipoEncomienda getTipoEncomienda() {
         return tipoEncomienda;
     }
-
+    /**
+     * 
+     * @param tipoEncomienda 
+     */
     public void setTipoEncomienda(TipoEncomienda tipoEncomienda) {
         this.tipoEncomienda = tipoEncomienda;
     }
-
     /**
      * Calcula el valor a pagar por la encomienda.
      */
@@ -72,7 +103,10 @@ public class Encomienda extends Servicio {
         total = (1 * this.getCantidadProducto()) + 4.0;
         this.setValorAPagar(total);
     }
-
+    /**
+     * Calcula el valor a pagar por la encomienda
+     * @param t es el tipo de pago
+     */
     public void calcularValorAPagar(TipoPago t) {
         if (t == TipoPago.TC) {
             double total;
@@ -86,7 +120,10 @@ public class Encomienda extends Servicio {
             this.setValorAPagar(total);
         }
     }
-    
+    /**
+     * Confirma la encomienda con la opcion cancelar
+     * @return verdadero si la encomineda está confirmada, y falso si se cancela
+     */
     public boolean confirmarEncomienda(){
         Scanner entrada = new Scanner(System.in);
         boolean confEncomienda = false;
@@ -105,12 +142,17 @@ public class Encomienda extends Servicio {
         } while (!(respuesta.equals("s")) && !(respuesta.equals("n")));
         return confEncomienda;
     }
-    
+    /**
+     * metodo escribirArchivoEncomienda escribe la información de la encomienda en el archivo encomiendas.txt
+     */
     public void escribirArchivoEncomienda(){
         String lineaAEscribir = this.getID() + "," + this.getTipoEncomienda() + "," + Integer.toString(this.getCantidadProducto()) + "," + Double.toString(this.getPeso()) + "," + Double.toString(this.getValorAPagar());
         ManejoArchivos.EscribirArchivo("encomiendas.txt", lineaAEscribir);
     }
-
+    
+    /**
+     * metodo que muestra la información de la encomienda
+     */
     @Override
     public void mostrarInformacion() {
         System.out.println();
