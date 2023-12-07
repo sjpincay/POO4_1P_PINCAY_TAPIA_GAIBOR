@@ -4,3 +4,4 @@ cedula,nombre,apellido,user,contraseña,celular,tipoUsuario
 0945698598,Marco,Cárdenas,mcarden,abcde,0975342533,C
 0962637343,Rafael,Sánchez,rsanchez,mopqrs,0967387155,R
 1205454451,Michael,Rodriguez,mrodriguez,uvwxy,0912346789,R
+0967387155,Sheyla,Pincay,sjpincay,12345,0967387155,C

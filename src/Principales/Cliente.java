@@ -263,7 +263,7 @@ public class Cliente extends Usuario {
             String origen = sc.nextLine();
             System.out.print("Ingrese la direccion de destino: ");
             String destino = sc.nextLine();
-            System.out.print("Ingrese el tipo Medicamento/Documento/Ropa (M/D/R): ");
+            System.out.print("Ingrese el tipo Medicamento/Documento (M/D): ");
             String tEncomienda = sc.nextLine();
             TipoEncomienda TE;
             switch (tEncomienda) {
